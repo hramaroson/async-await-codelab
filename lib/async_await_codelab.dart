@@ -23,7 +23,12 @@ Future<int> execute() async {
 
  print(chalk.blue("\nfetchUserOrderWithError()"));
  print(chalk.green("Fetching order ..."));
- await fetchUserOrderWithError();
+ try {
+  await fetchUserOrderWithError();
+ } catch(e) {
+  print(chalk.brightRed("$e"));
+ }
+ 
 
  return 0;
 }
