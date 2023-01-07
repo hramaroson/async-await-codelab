@@ -1,8 +1,14 @@
 import 'package:chalkdart/chalk.dart'; 
 
-Future<void> fetchUserOrder() {
+Future<void> printOrderMessage() async{
+  print(chalk.green("Fetching order ..."));
+  var order = await fetchUserOrder();
+  print(chalk.magenta("Your order is $order"));
+}
+
+Future<String> fetchUserOrder() {
   return Future.delayed(const Duration(seconds: 2), 
-    () => print(chalk.magenta("Large Latte")));
+    () => "Large Latte");
 }
 
 Future<void> fetchUserOrderWithError(){
@@ -12,9 +18,8 @@ Future<void> fetchUserOrderWithError(){
 
 Future<int> execute() async {
  print(chalk.yellow("********Futures, async, await********"));
- print(chalk.blue("fetchUserOrder()"));
- print(chalk.green("Fetching order ..."));
- await fetchUserOrder();
+ print(chalk.blue("printOrderMessage()"));
+ await printOrderMessage();
 
  print(chalk.blue("\nfetchUserOrderWithError()"));
  print(chalk.green("Fetching order ..."));
